@@ -3,12 +3,31 @@
     <q-header class="q-pt-xs q-pb-xs" bordered>
       <q-toolbar>
         <q-img src="src/assets/logo.png" />
-        <q-toolbar-title class="text-h5">Instagram</q-toolbar-title>
+        <q-toolbar-title class="text-h5">Davegram</q-toolbar-title>
         <q-btn round dense flat size="10px" padding="10px" icon="bi-bell" @click="notifications = true" />
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="notifications" side="right" bordered> </q-drawer>
+    <q-drawer v-model="notifications" side="right" bordered>
+      <div class="bg-transparent q-pa-md row justify-between items-center shadow-1">
+        <div class="text-center text-h6">Notifications</div>
+        <q-btn dense round flat color="red" icon="close" @click="closeNotifications" />
+      </div>
+      <q-scroll-area class="fit">
+        <q-item v-for="n in 50" :key="n" clickable v-ripple>
+          <q-item-section top avatar>
+            <q-avatar color="primary" text-color="white" icon="bi-bell" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Single line item</q-item-label>
+            <q-item-label caption lines="2">Secondary line text.</q-item-label>
+          </q-item-section>
+          <q-item-section side>
+            <q-item-label caption>5 min ago</q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-scroll-area>
+    </q-drawer>
 
     <q-page-container>
       <q-page class="q-pa-md">
@@ -52,4 +71,8 @@
 import { ref } from "vue";
 
 const notifications = ref(false);
+
+const closeNotifications =() => {
+  notifications.value = false;
+}
 </script>

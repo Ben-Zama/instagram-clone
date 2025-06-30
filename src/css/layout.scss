@@ -1,0 +1,18 @@
+.main-layout {
+  height: 100vh;
+  display: flex;
+  .q-header {
+    background: transparent;
+    color: var(--text-color);
+    font-family: "Grand Hotel", cursive;
+    .q-img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .q-footer {
+    background: transparent;
+    color: var(--text-color);
+  }
+}
+

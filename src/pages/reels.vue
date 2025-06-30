@@ -1,6 +1,6 @@
 <template>
   <div>
-Feed
+Reels
   </div>
 </template>
 

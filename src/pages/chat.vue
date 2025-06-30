@@ -1,6 +1,6 @@
 <template>
   <div>
-Feed
+Chat
   </div>
 </template>
 

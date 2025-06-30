@@ -1,1 +1,44 @@
-// app global css in SCSS form
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+@font-face {
+    font-family: 'Grand Hotel';
+    src: url('/src/assets/fonts/GrandHotel-Regular.ttf');
+}
+
+/* Background-color */
+
+body.body--dark {
+    background: #171717;
+    color: #fcfcf7;
+}
+
+body.body--light {
+    background: #fcfcf7;
+    color: #171717;
+}
+
+
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+input, textarea {
+    outline: none;
+}
+
+button {
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}

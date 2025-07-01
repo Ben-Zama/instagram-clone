@@ -1,5 +1,5 @@
 <template>
-  <q-layout class="main-layout">
+  <q-layout view="hHh lpr fFf" class="main-layout">
     <q-header class="q-pt-xs q-pb-xs" bordered>
       <q-toolbar>
         <q-img src="src/assets/logo.png" />
@@ -30,9 +30,7 @@
     </q-drawer>
 
     <q-page-container>
-      <q-page class="q-pa-md">
-        <router-view />
-      </q-page>
+      <router-view />
     </q-page-container>
 
     <q-footer bordered>
@@ -72,7 +70,7 @@ import { ref } from "vue";
 
 const notifications = ref(false);
 
-const closeNotifications =() => {
+const closeNotifications = () => {
   notifications.value = false;
 }
 </script>

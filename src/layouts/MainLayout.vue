@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hHh lpr fFf" class="main-layout">
-    <q-header class="q-pt-xs q-pb-xs" bordered>
+    <q-header class="q-pt-xs q-pb-xs">
       <q-toolbar>
         <q-img src="src/assets/logo.png" />
         <q-toolbar-title class="text-h5">Davegram</q-toolbar-title>
@@ -33,7 +33,7 @@
       <router-view />
     </q-page-container>
 
-    <q-footer bordered>
+    <q-footer>
       <q-toolbar class="justify-evenly">
         <router-link to="/" v-slot="{ navigate, href, isActive }">
           <q-btn size="10px" padding="10px" :to="href" @click="navigate" round dense flat

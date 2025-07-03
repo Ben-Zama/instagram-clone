@@ -7,6 +7,7 @@
     background: var(--bg-color);
     color: var(--text-color);
     font-family: "Grand Hotel", cursive;
+    box-shadow: 2px 2px 8px var(--shadow-color);
     .q-img {
       width: 20px;
       height: 20px;
@@ -15,6 +16,7 @@
   .q-footer {
     background: var(--bg-color);
     color: var(--text-color);
+    box-shadow: -2px -2px 8px var(--shadow-color);
   }
 }
 
@@ -23,31 +25,64 @@
 .feed {
   width: 100%;
   min-height: 100px;
+
+  /* Story section */
+
   .story-section {
     width: 100%;
-    height: 125px;
-    padding: 20px 5px;
+    height: 160px;
+    padding: 0 5px;
     display: flex;
     flex-direction: row;
+    align-items: center;
+
+    .q-scrollarea__thumb {
+      display: none;
+    }
+
+    .q-scrollarea__content {
+      height: 100%
+    }
+
+    /* User story */
+
     .user-story-avatar {
       position: relative;
-      .add-story-btn {
+      height: 75px;
+      margin-top: none;
+      .add-story-btn-outline {
         position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 20px;
-        height: 20px;
+        bottom: -2.5px;
+        right: -2.5px;
+        width: 25px;
+        height: 25px;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #0b51e8;
-        font-size: 10px;
-        color: var(--text-color);
+        background: var(--bg-color);
         border-radius: 50%;
+        .add-story-btn {
+          width: 20px;
+          height: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          background-color: #0b51e8;
+          font-size: 10px;
+          color: white;
+        }
       }
     }
 
-    .ring {
+    /* Others Stories */
+
+    .story-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .ring {
       width: 82px;
       height: 82px;
       background: linear-gradient(80deg, #ffc500, #dd00af);
@@ -57,13 +92,70 @@
       align-items: center;
 
       .inner-ring {
-        width: 75px;
-        height: 75px;
+        width: 77px;
+        height: 77px;
         background: var(--bg-color);
         border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+    }
+    }
+  }
+
+  /* Post section */
+
+  .posts-section {
+    padding-top: 0;
+    .post {
+      margin: 20px auto;
+      max-width: 360px;
+      background: var(--bg-color);
+      color: var(--text-color);
+      box-shadow: 2px 2px 8px var(--shadow-color), -2px -2px 8px var(--shadow-color);
+
+      .title-card {
+        height: max-content;
+        padding: 10px;
+
+        .text {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          p {
+            margin: 0;
+            height: max-content;
+          }
+          p.username {
+            font-weight: bold;
+          }
+          p.subtitle {
+            font-size: x-small;
+            opacity: 0.75;
+          }
+        }
+      }
+
+      .bi-heart-fill {
+        color: red;
+      }
+
+      .likes {
+        height: 20px;
+        display: flex;
+        gap: 5px;
+        font-size: small;
+        .avatars {
+          position: relative;
+          width: 40px;
+          .q-avatar {
+          position: absolute;
+          overflow: hidden;
+          border: 1px solid var(--bg-color);
+        }
+        }
       }
     }
   }

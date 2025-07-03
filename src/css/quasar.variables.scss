@@ -7,6 +7,7 @@
 .body--dark {
   --text-color: #fcfcf7;
   --bg-color: #171717;
+  --shadow-color: #000000;
 }
 
 /* Light mode variables */
@@ -14,4 +15,5 @@
 .body--light {
   --text-color: #171717;
   --bg-color: #fcfcf7;
+  --shadow-color: #b6b6b6;
 }

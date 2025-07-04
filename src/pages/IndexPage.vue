@@ -98,8 +98,6 @@ const stories = ref([]);
 
 const posts = ref([]);
 
-const PostProfiles = ref([]);
-
 /* Fetch stories */
 
 const fetchStories = async () => {

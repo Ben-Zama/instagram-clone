@@ -1,12 +1,11 @@
 <template>
   <q-page class="feed">
-    <!-- Story section -->
 
+    <!-- Story section -->
     <q-scroll-area class="story-section">
       <div style="height: 100%" class="row no-wrap items-center q-gutter-x-md">
 
         <!-- User story -->
-
         <q-avatar class="user-story-avatar" size="75px">
           <q-img class="fit" src="/src/assets/headshot.jpg" />
           <div class="add-story-btn-outline">
@@ -15,7 +14,6 @@
         </q-avatar>
 
         <!-- Other stories -->
-
         <div class="story-container" v-for="(user, index) in stories" :key="index">
           <div class="ring">
           <div class="inner-ring">
@@ -30,14 +28,12 @@
     </q-scroll-area>
 
     <!-- Posts section -->
-
     <div class="posts-section q-pa-md">
 
-      <q-card v-for="post in posts" :key="post" class="post">
+      <q-card v-for="post in posts" :key="post.id" class="post">
         <q-img ratio="1" loading="lazy" :src="`https://picsum.photos/500/300?random=${Math.random()}`">
 
           <!-- Post Header -->
-
           <div class="title-card absolute-top row items-center q-gutter-md">
             <q-avatar size="35px">
               <q-img :src="post.user.picture.medium" />
@@ -51,10 +47,9 @@
         </q-img>
 
         <!-- Post Interactions -->
-
         <q-card-actions align=between>
           <div class="q-gutter-sm">
-            <q-btn @click="toggleLike" flat dense round :icon="liked ? 'bi-heart-fill' : 'bi-heart'" padding="5px" size="10px" />
+            <q-btn @click="toggleLike(post)" flat dense round :icon="post.liked ? 'bi-heart-fill' : 'bi-heart'" padding="5px" size="10px" />
             <q-btn flat dense round icon="bi-chat-right" padding="5px" size="10px" />
             <q-btn flat dense round icon="bi-send" padding="5px" size="10px" />
           </div>
@@ -62,7 +57,6 @@
         </q-card-actions>
 
         <!-- Post likes -->
-
         <q-card-section class="likes q-pa-none q-pl-sm avatar-container">
           <div class="avatars">
             <q-avatar v-for="(n, i) in 3" :key="n" size="17.5px" class="avatar"
@@ -74,7 +68,6 @@
         </q-card-section>
 
         <!-- Post caption & comments -->
-
         <q-card-section class="q-pa-sm">
           <span class="text-bold">{{ post.title }}</span>
           <span class="text-caption ellipsis-2-lines">{{ post.body }}</span>
@@ -83,9 +76,7 @@
           </p>
           <p class="q-pa-none q-ma-none text-caption text-grey cursor-pointer">View all {{ post.reactions.dislikes.toLocaleString() }} comments</p>
         </q-card-section>
-
       </q-card>
-
     </div>
   </q-page>
 </template>
@@ -99,7 +90,6 @@ const stories = ref([]);
 const posts = ref([]);
 
 /* Fetch stories */
-
 const fetchStories = async () => {
   try {
     const response = await axios.get('https://randomuser.me/api/?results=10');
@@ -110,7 +100,6 @@ const fetchStories = async () => {
 };
 
 /* Fetch Posts */
-
 const fetchPosts = async () => {
   try {
     const [postsRes, profilesRes] = await Promise.all([
@@ -138,12 +127,12 @@ onMounted(() => {
 });
 
 /* Liked and bookmarked state */
-
 const liked = ref(false);
 const saved = ref(false);
 
-const toggleLike = () => {
-  liked.value = !liked.value;
+const toggleLike = (post) => {
+  post.liked = !post.liked;
+  post.reactions.likes += post.liked ? 1 : -1;
 };
 
 const toggleSave = () => {
